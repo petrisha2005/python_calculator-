@@ -1,38 +1,40 @@
-def get_number(msg):
+import math
+
+def calculator():
     while True:
-        try:
-            return float(input(msg))
-        except ValueError:
-            print("❌ Please enter a valid number")
+        print("""
+1. Add
+2. Subtract
+3. Multiply
+4. Divide
+5. Power
+6. Square Root
+7. Exit
+""")
+        choice = input("Choose (1-7): ")
 
+        if choice == "7":
+            break
 
-def divide(a, b):
-    if b == 0:
-        return "Cannot divide by zero"
-    return a / b
+        if choice == "6":
+            num = float(input("Enter number: "))
+            print("Result:", math.sqrt(num))
+            continue
 
+        a = float(input("Enter first number: "))
+        b = float(input("Enter second number: "))
 
-print("🧮 Safe Python Calculator")
+        if choice == "1":
+            print("Result:", a + b)
+        elif choice == "2":
+            print("Result:", a - b)
+        elif choice == "3":
+            print("Result:", a * b)
+        elif choice == "4":
+            print("Result:", "Error" if b == 0 else a / b)
+        elif choice == "5":
+            print("Result:", pow(a, b))
+        else:
+            print("Invalid choice")
 
-while True:
-    print("\n1.Add 2.Subtract 3.Multiply 4.Divide 5.Exit")
-    choice = input("Choose (1-5): ")
-
-    if choice == "5":
-        break
-
-    if choice not in ["1", "2", "3", "4"]:
-        print("Invalid choice")
-        continue
-
-    a = get_number("Enter first number: ")
-    b = get_number("Enter second number: ")
-
-    if choice == "1":
-        print("Result:", a + b)
-    elif choice == "2":
-        print("Result:", a - b)
-    elif choice == "3":
-        print("Result:", a * b)
-    elif choice == "4":
-        print("Result:", divide(a, b))
+calculator()
