@@ -1,11 +1,10 @@
-def add(a, b):
-    return a + b
+def get_number(msg):
+    while True:
+        try:
+            return float(input(msg))
+        except ValueError:
+            print("❌ Please enter a valid number")
 
-def subtract(a, b):
-    return a - b
-
-def multiply(a, b):
-    return a * b
 
 def divide(a, b):
     if b == 0:
@@ -13,25 +12,27 @@ def divide(a, b):
     return a / b
 
 
-print("🧮 Python Calculator")
+print("🧮 Safe Python Calculator")
 
 while True:
-    print("\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit")
+    print("\n1.Add 2.Subtract 3.Multiply 4.Divide 5.Exit")
     choice = input("Choose (1-5): ")
 
     if choice == "5":
         break
 
-    a = float(input("Enter first number: "))
-    b = float(input("Enter second number: "))
+    if choice not in ["1", "2", "3", "4"]:
+        print("Invalid choice")
+        continue
+
+    a = get_number("Enter first number: ")
+    b = get_number("Enter second number: ")
 
     if choice == "1":
-        print("Result:", add(a, b))
+        print("Result:", a + b)
     elif choice == "2":
-        print("Result:", subtract(a, b))
+        print("Result:", a - b)
     elif choice == "3":
-        print("Result:", multiply(a, b))
+        print("Result:", a * b)
     elif choice == "4":
         print("Result:", divide(a, b))
-    else:
-        print("Invalid option")
